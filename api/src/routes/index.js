@@ -1,12 +1,15 @@
 const { Router, request } = require('express');
 var bodyParser = require('body-parser');
 const fetch = require("node-fetch");
+
+const { Dog, Temperamento } = require('../db');
+
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
 router.use(bodyParser.json());
-
+require('run-middleware')(router);
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
@@ -86,11 +89,39 @@ router.get('/dogs/:idRaza', (req, res) => {
         })
 });
 
+// GET /temperaments
 
-// GET /temperament 
+router.get('/temperaments', (req, res) => {
+    var temps = [];
 
-router.get('/temperament', (req, res) => {
+    fetch('https://api.thedogapi.com/v1/breeds')
+        .then(r => r.json())
+        .then(data => {
+            Temperamento.findAll().then(tabla => {
+                if (tabla.length === 0) {
+                    data.forEach(c => temps.push(c.temperament ? c.temperament.split(',' && ', ') : 'hola'));
+                    var array2 = Array.from(new Set(temps.flat()))
+                    array2.forEach(c => Temperamento.create({ name: c }));
+                    return res.json(array2);
+                }
 
+                else {
+                    return res.json(tabla);
+                }
+
+            });
+        });
+});
+
+
+// POST /dog 
+
+router.post('/dog', (req, res) => {
+    const { name, weight, height, life_span } = req.body;
+    if (name && weight && height && life_span) {
+        Dog.create({ name, weight, height, life_span });
+        res.send('Dog created!');
+    }
 })
 
 
