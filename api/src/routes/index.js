@@ -30,8 +30,9 @@ router.get('/dogs', (req, res) => {
                 for (let i = 0; i < 8 && i < data.length; i++) {
                     myRes.push(data[i])
                 }
-
-                res.json(myRes)
+        
+                return res.send(myRes)
+             
             });
     }
     //if just /dog
@@ -52,6 +53,7 @@ router.get('/dogs', (req, res) => {
                 res.json(myRes);
             })
     }
+    
 });
 
 

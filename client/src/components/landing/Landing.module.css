@@ -1,0 +1,35 @@
+.mainDiv{
+    
+    background-image: url('../../images/fondoLanding.jpg');
+    min-height: 100vh;
+    background-size:100% 100%;
+    
+}
+
+.secondDiv{
+   
+   min-height: 100vh;
+   max-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   
+  
+}
+
+.img{
+    width:30%;
+    align-self: center;
+    margin-top:100px;
+    filter: drop-shadow(5px 5px 5px #222);
+}
+
+.buttonDiv{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+}
+.btn{
+    margin:10px;
+    padding:10px;
+    width:150px;
+}
