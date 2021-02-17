@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Styles from './SearchBar.module.css';
 import {searchDogByName} from '../../actions/actions';
 
-export function SearchBar({searchBar, searchDogByName}) {
+export function SearchBar({resultsbyName, searchBar, searchDogByName}) {
     const [input, setInput] = React.useState('');
 
     function handleInputChange(e) {
@@ -17,17 +17,19 @@ export function SearchBar({searchBar, searchDogByName}) {
     } 
 
     return (
+        <div>
         <form onSubmit={handleSubmit}>
             <input onChange={handleInputChange} className={Styles.inpt} type="text"></input>
             <button className={Styles.btnIn}>X</button>
             <button >B</button>
         </form>
+        </div>
     )
 }
 
 function mapStateToProps(state) {
     return {
-        
+        resultsbyName: state.resultsbyName
     }
 
 }
@@ -35,7 +37,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        searchDogByName: name => dispatch(searchDogByName(name)),
+        searchDogByName: name =>{ dispatch(searchDogByName(name))},
     }
 }
 

@@ -19,7 +19,7 @@ const key = '969b5fbc-8212-491d-80f3-a84877eab206';
 
 // GET /dogs && dogs?name
 router.get('/dogs', (req, res) => {
-    console.log('entro');
+   
     //if query attached
     if (req.query.name) {
         fetch(`https://api.thedogapi.com/v1/breeds/search?name=${req.query.name}&apikey=${key}`)
