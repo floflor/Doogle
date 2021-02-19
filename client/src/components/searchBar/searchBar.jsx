@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Styles from './SearchBar.module.css';
 import {searchDogByName} from '../../actions/actions';
+import Styles from '../mainPage/mainPage.module.css';
 
-export function SearchBar({resultsbyName, searchBar, searchDogByName}) {
+ function SearchBar({searchDogByName}) {
     const [input, setInput] = React.useState('');
 
     function handleInputChange(e) {
@@ -16,12 +16,12 @@ export function SearchBar({resultsbyName, searchBar, searchDogByName}) {
         searchDogByName(input);
     } 
 
+
     return (
-        <div>
-        <form onSubmit={handleSubmit}>
-            <input onChange={handleInputChange} className={Styles.inpt} type="text"></input>
-            <button className={Styles.btnIn}>X</button>
-            <button >B</button>
+        <div className={Styles.searchBarDiv}>
+        <form onSubmit={handleSubmit} className={Styles.formStyle}>
+            <input  className={Styles.inpt} onChange={handleInputChange} type="text"></input>
+            <button >B</button>  
         </form>
         </div>
     )

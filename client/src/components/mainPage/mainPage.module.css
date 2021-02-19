@@ -1,0 +1,80 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+.mainDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    min-height:100vh;
+}
+.secDiv{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 15vh;
+    background-color: #A36A2C;
+}
+.navBar{
+    display:flex;
+    min-height: auto;
+    background-color: #A36A2C;
+    margin-top: 20px;
+    
+}
+
+.logo{
+    height: 50px;
+    align-self: center;
+    margin-left: 30px;
+    filter: drop-shadow(1.5px 1.5px 1.5px #222);
+}
+
+
+.formStyle{
+   
+    margin-left: 40px;
+    align-self: center;
+    height: auto;
+    
+}
+
+.inpt{
+   width:500px;
+   height: 40px;
+   font-size: 1rem;
+   padding-left:20px;
+   border-radius: 20px;
+   border: none;
+   font-family:'Roboto', sans-serif;
+   font-weight: 400;
+  
+   
+}
+
+.inpt:focus{
+    outline: none;
+   
+    filter: drop-shadow(2px 2px 2px rgb(29, 29, 29));
+}
+
+.searchBarDiv{
+    height:10%;
+    align-self: center;
+}
+
+.divLinks{
+    width: 690px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+.Links{
+    margin-right: 20px;
+    text-decoration: none;
+    color:black;
+    font-family:'Roboto', sans-serif;
+    
+}
