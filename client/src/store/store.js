@@ -6,8 +6,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 const initialState = {
-    resultsbyName: []
-  
+    resultsbyName: [],
+    details : [],
+    random : []
 }
 
 const reducer = function (state = initialState, action) {
@@ -17,6 +18,16 @@ const reducer = function (state = initialState, action) {
             return {
 
                 resultsbyName: action.payload
+            }
+
+        case 'GET_DETAIL':
+            return{
+                details : action.payload
+            }
+
+        case 'GET_RANDOM':
+            return{
+                random: action.payload
             }
 
 

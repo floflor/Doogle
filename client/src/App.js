@@ -5,6 +5,8 @@ import Landing from './components/landing/landing';
 import MainPage from './components/mainPage/mainPage';
 import Create from './components/create/create';
 import About from './components/about/about';
+import NavBar from './components/navBar/navBar';
+import Detail from './components/detail/detail'
 import { Provider } from 'react-redux';
 
 import store from './store/store';
@@ -15,9 +17,11 @@ function App() {
       <Router>
         <div className="App">
           <Route exact path='/' component={Landing} />
+          <Route path='/search' component={NavBar}/>
           <Route path='/search' component={MainPage}/>
           <Route path='/create' component={Create}/>
           <Route path='/about' component={About}/>  
+          <Route path='/detail/:name' component={Detail}/>
         </div>
       </Router>
     </Provider>

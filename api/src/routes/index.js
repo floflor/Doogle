@@ -1,7 +1,6 @@
 const { Router, request } = require('express');
 var bodyParser = require('body-parser');
 const fetch = require("node-fetch");
-
 const { Dog, Temperamento } = require('../db');
 
 // Importar todos los routers;
@@ -78,7 +77,10 @@ router.get('/dogs/:idRaza', (req, res) => {
                     var myObj = {
                         temperament: dt.breeds[0].temperament,
                         name: dt.breeds[0].name,
-                        image: dt.url
+                        image: dt.url,
+                        weight: dt.breeds[0].weight,
+                        height: dt.breeds[0].height,
+                        lifeSpan: dt.breeds[0].life_span
                     }
 
                     myArr.push(myObj);
