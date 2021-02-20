@@ -8,16 +8,19 @@ function Detail ({getDetail, match ,details}){
      
      getDetail(name)
     }, []);
-    return(
-        <div>
-        <h1>{details && details[0].name}</h1>
-        <p>{details && details[0].temperament}</p>
-        <p>{details && details[0].height.metric}</p>
-        <p>{details && details[0].weight.metric} </p>
-        <p>{details && details[0].lifeSpan} </p>
-        
-        </div>
-    )
+
+    if (details && details[0]){
+        return(
+            <div>
+            <h1>{details[0].name}</h1>
+            <p>{details[0].temperament}</p>
+            <p>{details[0].height.metric}</p>
+            <p>{details[0].weight.metric} </p>
+            <p>{details[0].lifeSpan} </p>
+            
+            </div>
+        )
+    }else {return <div>Loading...</div>}
 }
 
 function mapStateToProps(state){

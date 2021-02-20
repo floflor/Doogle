@@ -20,7 +20,7 @@ import Styles from '../mainPage/mainPage.module.css';
     return (
         <div className={Styles.searchBarDiv}>
         <form onSubmit={handleSubmit} className={Styles.formStyle}>
-            <input  className={Styles.inpt} onChange={handleInputChange} type="text"></input>
+            <input placeholder='Search your favorite doggos...' className={Styles.inpt} onChange={handleInputChange} type="text"/>
             <button >B</button>  
         </form>
         </div>

@@ -2,33 +2,34 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getRandom } from '../../actions/actions';
 import Error from '../../images/imgNotFound.png';
+import Styles from './random.module.css';
+
 
 
 function Random({ getRandom, random }) {
-
     useEffect(() => {
-
         getRandom();
     }, []);
 
     return (
 
-        <div>
-            <div>
-                <h1>Welcome to Doogle!</h1>
-                <p>We suggest you to start by searching your favorite doggo, if there's no results, you can
-                create your own, have fun!
-            </p>
-            </div>
-            {random && random.map((r, index) =>
-                <div key={index}>
-                    <p key={r.id}>Breed:{r.name}</p>
-                    <p key={r.name}>Temperament: {r.temperament}.</p>
-                    {!r.image ? <img src={Error} alt="Not found" /> :
-                        <img key={r.image.id} src={r.image.url} alt={r.name} />}
+        <div className={Styles.randomDiv}>
 
-                </div>
-            )}
+            {random && <div className={Styles.titleDiv}>
+                <h1>Welcome to Doogle!</h1>
+                <p className={Styles.subT}>We suggest you to start by searching your favorite dog, if you don`t find what
+                    you're looking for, you always can create your own doggo...</p></div>}
+
+            <div className={Styles.allTheCards}>
+                {random && random.map((r, index) =>
+                    <div key={index} className={Styles.randomCards}>
+                        <p key={r.id}>{r.name}</p>
+                        {!r.image ? <img className={Styles.image} src={Error} alt="Not found" /> :
+                            <img className={Styles.image} key={r.image.id} src={r.image.url} alt={r.name} />}
+
+                    </div>
+                )}
+            </div>
         </div>
 
     )
@@ -36,7 +37,7 @@ function Random({ getRandom, random }) {
 
 function mapStateToProps(state) {
     return {
-        random: state.random
+        random: state.random,
     }
 }
 

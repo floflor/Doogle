@@ -23,7 +23,7 @@ function MainPage({results}) {
         <div className={Styles.mainDiv}>
            
             
-            <Random></Random>
+             <Random></Random>
             <div>
             <Card res={currentResult}></Card>
             <Pagination resultsPerPage={resultsPerPage} totalResults={results && results.length} paginate={paginate}></Pagination>
