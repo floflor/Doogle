@@ -104,7 +104,7 @@ router.get('/temperaments', (req, res) => {
             await Temperamento.findAll().then(async tabla => {
                 var result = tabla;
                 if (tabla.length === 0) {
-                    data.forEach(c => temps.push(c.temperament ? c.temperament.split(',' && ', ') : 'error'));
+                    data.forEach(c => temps.push(c.temperament ? c.temperament.split(',' && ', ') : 'Cutie'));
                     var array2 = Array.from(new Set(temps.flat()))
                     for (var i in array2){
                         await Temperamento.create({ name: array2[i] });  
