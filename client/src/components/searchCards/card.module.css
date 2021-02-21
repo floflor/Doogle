@@ -21,8 +21,10 @@
 }
 
 .divCard:hover{
-    background-color: #f1e2c4;
+    background-color:rgb(212, 212, 212);
+
 }
+
 
 .separate{
     display: flex;

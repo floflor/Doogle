@@ -9,6 +9,7 @@
     justify-content:flex-start;
     min-height:100vh;
     background-image: url('../../images/background.png');
+    overflow: auto;
   
 }
 .secDiv{
@@ -17,7 +18,7 @@
     justify-content: center;
     min-height: 15vh;
     background-color:rgb(245, 243, 243);
-    box-shadow: 0px 5px 14px 5px rgba(0,0,0,0.79);
+    box-shadow: 0px 0px 12px 5px rgba(0,0,0,0.79);
     
     
 }
@@ -43,7 +44,7 @@
     margin-left: 40px;
     align-self: center;
     height: auto;
-    
+    display: flex;
 }
 
 .inpt{
@@ -55,6 +56,7 @@
    border: 1px solid rgb(126, 126, 126);
    font-family:'Roboto', sans-serif;
    font-weight: 400;
+   align-self: center;
   
    
 }
@@ -67,6 +69,7 @@
 .searchBarDiv{
     height:10%;
     align-self: center;
+    
 }
 
 .divLinks{
@@ -82,4 +85,25 @@
     color:black;
     font-family:'Roboto', sans-serif;
     
+}
+.icon{
+    height:40px;
+    width: auto;
+    margin-left: 3px;
+    align-self: center;
+    border: 1px solid rgb(126, 126, 126);
+    border-radius: 100%;
+}
+
+.icon:hover{
+    background-color: rgb(212, 212, 212);
+}
+
+.btn{
+    border:none;
+    background-color: transparent;
+}
+
+.btn:focus{
+    outline:none;
 }

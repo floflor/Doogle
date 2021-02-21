@@ -17,8 +17,8 @@ function Random({ getRandom, random }) {
 
             {random && <div className={Styles.titleDiv}>
                 <h1>Welcome to Doogle!</h1>
-                <p className={Styles.subT}>We suggest you to start by searching your favorite dog, if you don`t find what
-                    you're looking for, you always can create your own doggo...</p></div>}
+                <p className={Styles.subT}>We suggest you to start by searching your favorite dog...
+                   </p></div>}
 
             <div className={Styles.allTheCards}>
                 {random && random.map((r, index) =>

@@ -22,6 +22,8 @@
     filter: drop-shadow(4px 4px 4px #222);
     font-family:'Roboto', sans-serif;
     border-radius: 10px;
+    display:flex;
+    flex-direction: column;
 }
 .allTheCards{
     display: flex;
@@ -44,9 +46,11 @@ h1{
 
 .titleDiv{
     background: url('../../images/dogrammin.png');
-    border:2px solid black;
+    box-shadow: 0 6px 6px 2px gray;
     border-radius: 20px;
     margin:30px;
     color:black;
+    background-color: white;
+  
     
 }

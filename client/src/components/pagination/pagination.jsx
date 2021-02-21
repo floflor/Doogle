@@ -1,4 +1,5 @@
 import React from 'react';
+import Styles from './pagination.module.css';
 
 export default function Pagination({ resultsPerPage, totalResults, paginate }) {
     const pageNumbers = [];
@@ -8,11 +9,11 @@ export default function Pagination({ resultsPerPage, totalResults, paginate }) {
     }
 
     return (
-        <nav>
+        <nav className={Styles.divPag}>
             
                 {pageNumbers.map(number => (
                     
-                        <button key={number} onClick={()=> paginate(number)}>
+                        <button className={Styles.btn} key={number} onClick={()=> paginate(number)}>
                             {number}
                         </button>
                    

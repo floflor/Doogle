@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {searchDogByName} from '../../actions/actions';
 import Styles from '../mainPage/mainPage.module.css';
+import SearchIcon from '../../images/searchicon.svg';
+import { useHistory } from 'react-router';
 
  function SearchBar({searchDogByName}) {
     const [input, setInput] = React.useState('');
@@ -10,9 +12,12 @@ import Styles from '../mainPage/mainPage.module.css';
         setInput(e.target.value)
     }
 
+    const history = useHistory();
     
     function handleSubmit(e){
+
         e.preventDefault();
+        history.push('/search');
         searchDogByName(input);
     } 
 
@@ -21,7 +26,9 @@ import Styles from '../mainPage/mainPage.module.css';
         <div className={Styles.searchBarDiv}>
         <form onSubmit={handleSubmit} className={Styles.formStyle}>
             <input placeholder='Search your favorite doggos...' className={Styles.inpt} onChange={handleInputChange} type="text"/>
-            <button >B</button>  
+            <button onClick={handleSubmit} className={Styles.btn}>
+            <img className={Styles.icon} src={SearchIcon}></img>
+            </button>
         </form>
         </div>
     )

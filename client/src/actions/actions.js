@@ -39,3 +39,12 @@ export function getRandom(){
         .then(data => dispatch({type:'GET_RANDOM', payload: data}))
     }
 }
+
+export function getTemperaments(){
+    return function (dispatch){
+        fetch('http://localhost:3001/temperaments')
+        .then(r => r.json())
+        .then( data => dispatch({type:'GET_TEMPS', payload: data}))
+      
+    }
+}

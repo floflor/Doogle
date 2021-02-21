@@ -21,9 +21,6 @@ function MainPage({results}) {
 
     return (
         <div className={Styles.mainDiv}>
-           
-            
-             <Random></Random>
             <div>
             <Card res={currentResult}></Card>
             <Pagination resultsPerPage={resultsPerPage} totalResults={results && results.length} paginate={paginate}></Pagination>

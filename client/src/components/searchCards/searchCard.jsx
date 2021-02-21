@@ -2,26 +2,33 @@ import React from 'react';
 import imgNotFound from '../../images/imgNotFound.png'
 import Styles from './card.module.css'
 import { Link } from 'react-router-dom';
+import Filters from '../filters/filters';
 
 export default function Card({ res }) {
-    
+
 
     return (
-        <div className= {Styles.containerCards}>
+        <div>
+            <div>
+                <Filters></Filters>
+            </div>
+            <div className={Styles.containerCards}>
+                {res && res.map(c =>
+                    <Link className={Styles.link} to={`/detail/${c.name}`}>
+                        <div className={Styles.divCard}>
+                            <div className={Styles.separate}>
+                                <p className={Styles.title} key={c.id}>Breed: {c.name}</p>
+                                <p className={Styles.temp} key={c.name}>Temperament: {c.temperament}.</p>
+                            </div>
+                            {c.img === 'error' ? <img className={Styles.image} src={imgNotFound} alt="Not found" /> :
+                                <img className={Styles.image} key={c.reference_image_id} src={c.img} alt={c.name} />}
 
-            {res && res.map(c =>
-            <Link className={Styles.link} to={`/detail/${c.name}`}>
-                <div className={Styles.divCard}>
-                    <div className={Styles.separate}>
-                    <p className={Styles.title} key={c.id}>Breed: {c.name}</p>
-                    <p className={Styles.temp} key={c.name}>Temperament: {c.temperament}.</p>
-                    </div>
-                    {c.img === 'error'? <img className={Styles.image} src={imgNotFound} alt="Not found"/> : 
-                    <img className={Styles.image} key={c.reference_image_id} src={c.img} alt={c.name} />}
-            
-                </div>
-                </Link>
+                        </div>
+                    </Link>
                 )}
+            </div>
         </div>
     )
 }
+
+
