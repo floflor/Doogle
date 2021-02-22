@@ -14,7 +14,7 @@ export default function Card({ res }) {
             </div>
             <div className={Styles.containerCards}>
                 {res && res.map(c =>
-                    <Link className={Styles.link} to={`/detail/${c.name}`}>
+                    <Link className={Styles.link} to={`/detail/${c.id}`}>
                         <div className={Styles.divCard}>
                             <div className={Styles.separate}>
                                 <p className={Styles.title} key={c.id}>Breed: {c.name}</p>

@@ -2,21 +2,25 @@ import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 import {getDetail} from '../../actions/actions';
 
-function Detail ({getDetail, match ,details}){
+function Detail ({getDetail, match ,details }){
+    
+
     useEffect(()=>{
-     const name = match.params.name
+     const id = match.params.id
      
-     getDetail(name)
+     
+     getDetail(id) 
     }, []);
+ 
 
     if (details && details[0]){
         return(
             <div>
-            <h1>{details[0].name}</h1>
-            <p>{details[0].temperament}</p>
-            <p>{details[0].height.metric}</p>
-            <p>{details[0].weight.metric} </p>
-            <p>{details[0].lifeSpan} </p>
+            <h1>{details[0].breeds[0].name}</h1>
+            <p>{details[0].breeds[0].temperament}</p>
+            <p>{details[0].breeds[0].height.metric}</p>
+            <p>{details[0].breeds[0].weight.metric} </p>
+            <p>{details[0].breeds[0].lifeSpan} </p>
             
             </div>
         )
@@ -24,7 +28,7 @@ function Detail ({getDetail, match ,details}){
 }
 
 function mapStateToProps(state){
-    console.log(state);
+    
     return {
       details : state.details
     }
@@ -32,9 +36,14 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     
+    
     return{
-       getDetail: name =>{ dispatch(getDetail(name))},
+       getDetail: id =>{ dispatch(getDetail(id))},
+    
     }
 }
+
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Detail);

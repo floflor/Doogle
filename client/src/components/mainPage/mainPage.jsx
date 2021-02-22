@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Card from '../searchCards/searchCard';
 import Pagination from '../pagination/pagination';
 import Styles from './mainPage.module.css';
-import Random from '../random/random';
+
 
 function MainPage({results}) {
     

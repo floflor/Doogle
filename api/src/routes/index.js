@@ -61,36 +61,26 @@ router.get('/dogs', (req, res) => {
 // GET dogs/{idRaza}
 
 router.get('/dogs/:idRaza', (req, res) => {
-    console.log(req.params.idRaza);
-    fetch(`https://api.thedogapi.com/v1/breeds/search?name=${req.params.idRaza}&apikey=${key}`)
-        .then(r => r.json())
-        .then(data => {
-
-            var referenceImg = data[0].reference_image_id;
-
-
-            fetch(`https://api.thedogapi.com/v1/images/${referenceImg}`)
-                .then(r => r.json())
-                .then(dt => {
-                    console.log(referenceImg)
-                    var myArr = [];
+    fetch(`https://api.thedogapi.com/v1/images/search?breed_id=${req.params.idRaza}`)
+           .then(r => r.json())
+           .then(dt =>{
+            
+                 var myArr = [];
 
                     var myObj = {
-                        temperament: dt.breeds[0].temperament,
-                        name: dt.breeds[0].name,
-                        image: dt.url,
-                        weight: dt.breeds[0].weight,
-                        height: dt.breeds[0].height,
-                        lifeSpan: dt.breeds[0].life_span
+                        temperament: dt[0].breeds.temperament,
+                        name: dt[0].breeds[0].name,
+                        image: dt[0].url,
+                        weight: dt[0].breeds[0].weight.metric,
+                        height: dt[0].breeds[0].height.metric,
+                        lifeSpan: dt[0].breeds[0].life_span
                     }
 
                     myArr.push(myObj);
-
-
-                    return res.json(myArr);
-                })
-            return;
-        })
+                    return res.json(dt);
+           })
+    
+    
 });
 
 // GET /temperaments

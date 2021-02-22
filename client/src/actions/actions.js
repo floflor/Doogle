@@ -24,9 +24,10 @@ export function searchDogByName(name){
     }
 } 
 
-export function getDetail(name){
+export function getDetail(id){
+    console.log(id)
     return function(dispatch){
-        return fetch(`http://localhost:3001/dogs/${name}`)
+        return fetch(`http://localhost:3001/dogs/${id}`)
         .then(r=>r.json())
         .then(data => dispatch({type:'GET_DETAIL', payload: data}))
     }

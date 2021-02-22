@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getRandom } from '../../actions/actions';
 import Error from '../../images/imgNotFound.png';
@@ -8,6 +9,7 @@ import Styles from './random.module.css';
 
 function Random({ getRandom, random }) {
     useEffect(() => {
+        
         getRandom();
     }, []);
 
@@ -22,12 +24,14 @@ function Random({ getRandom, random }) {
 
             <div className={Styles.allTheCards}>
                 {random && random.map((r, index) =>
+                <Link className={Styles.link} to={`/detail/${r.name}`}>
                     <div key={index} className={Styles.randomCards}>
                         <p key={r.id}>{r.name}</p>
                         {!r.image ? <img className={Styles.image} src={Error} alt="Not found" /> :
                             <img className={Styles.image} key={r.image.id} src={r.image.url} alt={r.name} />}
 
                     </div>
+                    </Link>
                 )}
             </div>
         </div>
@@ -44,6 +48,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         getRandom: () => { dispatch(getRandom()) },
+     
     }
 }
 

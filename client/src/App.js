@@ -23,7 +23,7 @@ function App() {
           <Route path='/search' component={MainPage}/>
           <Route path='/create' component={Create}/>
           <Route path='/about' component={About}/>  
-          <Route path='/detail/:name' component={Detail}/>
+          <Route path='/detail/:id' component={Detail}/>
         </div>
       </Router>
     </Provider>
