@@ -50,22 +50,22 @@ function Create({getTemperaments, temps}) {
             <h1>Create a Doggo!</h1>
 
             <form className={Styles.createContainer} onSubmit={submit}>
-                <label for="Name">Name</label>
+                <label htmlFor="Name">Name</label>
                 <input className={Styles.input} onChange={handleInputChange} type='text' name='name' placeholder='Put a name...' required />
 
 
-                <label for="Weight">Weight</label>
+                <label htmlFor="Weight">Weight</label>
                 <input className={Styles.input} onChange={handleInputChange} name='weight' placeholder='weight' type='number' required />
 
-                <label for="Height">Height</label>
+                <label htmlFor="Height">Height</label>
                 <input className={Styles.input} onChange={handleInputChange} name='height' placeholder='Height' type='number' required />
 
-                <label for="LifeSpan">Life Span</label>
+                <label htmlFor="LifeSpan">Life Span</label>
                 <input className={Styles.input} onChange={handleInputChange} type='number' name='life_span' placeholder='Life Span' required />
                
                 <select onChange={handleSelectChange}>
                     <option>Select</option>
-                 {temps && temps.map(t => <option className={Styles.options} value={t.name}>{t.name}</option>)}      
+                 {temps && temps.map((t, index ) => <option key={index} className={Styles.options} value={t.name}>{t.name}</option>)}      
                 </select>
 
                 <button className={Styles.btn} onSubmit={submit}>Submit</button>
