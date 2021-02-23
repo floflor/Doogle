@@ -1,29 +1,19 @@
-// temperamento, raza exitente o creada por nosotros, ascendente/descendente alfabetico y peso
+// temperamento, raza exitente o creada por nosotros
 import { connect } from 'react-redux';
 import { setFilters } from '../../actions/actions';
 import React, { useState } from 'react';
 
-function Filters({ setFilters, activeFilters }) {
+function Filters({ setFilters }) {
 
-    const [menu, setMenu] = useState(false);
-
-    function handleClick(e) {
-        e.preventDefault();
-        if (menu === false) {
-            setMenu(true);
-        } else {
-            setMenu(false);
-        }
-    }
-
+    //DEFINING HOOKS FOR SELECT STATES
     const [select, setSelect] = useState({
         temperament: '',
         breed: ''
- 
+
     })
 
 
-
+    //HANDLING CHANGE 
     function handleSelectChange(e) {
         e.preventDefault();
 
@@ -33,6 +23,7 @@ function Filters({ setFilters, activeFilters }) {
         });
     }
 
+    //HANDLING SUBMIT (FILTERS SET UP)
     function handleSubmit(e) {
         e.preventDefault();
         setFilters(select)
@@ -45,6 +36,7 @@ function Filters({ setFilters, activeFilters }) {
         <div>
 
             <form onSubmit={handleSubmit}>
+
                 <select onChange={handleSelectChange} name="temperament">
                     <option>Temperament</option>
                     <option value='Gentle' name='Gentle'>Gentle</option>
@@ -62,9 +54,9 @@ function Filters({ setFilters, activeFilters }) {
                     <option value='Created by me' name='Created by me'>Created by me</option>
                 </select>
 
-                
 
-                <button type='submit'>SUBMIT</button>
+
+                <button type='submit'>Set Filters</button>
 
             </form>
 
@@ -75,7 +67,7 @@ function Filters({ setFilters, activeFilters }) {
 
 function mapStateToProps(state) {
     return {
-        activeFilters: state.activeFilters
+        
     }
 }
 

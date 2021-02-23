@@ -112,21 +112,24 @@ router.get('/temperaments', (req, res) => {
 
 // POST /dog 
 
+var idD=0;
 router.post('/dog', async (req, res) => {
+    
     var temperamentoId;
     var dogId;
-    let id = 0
+    idD++;
+   
     const { name, weight, height, life_span, temps } = req.body;
     if (name && weight && height && life_span && temps) {
-        await Dog.create({id:id + "b" , name, weight, height, life_span });
-        id++
+        await Dog.create({id:idD +'b', name, weight, height, life_span, cbm: 'yes', temperament:temps });
         await Temperamento.findOne({ where: { name: temps } })
-            .then(data => { temperamentoId = data.id })
+        .then(data => { temperamentoId = data.id })
         await Dog.findOne({ where: { name: name } })
-            .then(dato => { dogId = dato.id })
-
+        .then(dato => { dogId = dato.id })
+        
         tablaIntermedia.create({ dogId, temperamentoId });
-
+        
+        
         res.send('Dog created!');
     }
 

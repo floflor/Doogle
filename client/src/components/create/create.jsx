@@ -63,7 +63,7 @@ function Create({getTemperaments, temps}) {
                 <label htmlFor="LifeSpan">Life Span</label>
                 <input className={Styles.input} onChange={handleInputChange} type='number' name='life_span' placeholder='Life Span' required />
                
-                <select onChange={handleSelectChange}>
+                <select onChange={handleSelectChange} required>
                     <option>Select</option>
                  {temps && temps.map((t, index ) => <option key={index} className={Styles.options} value={t.name}>{t.name}</option>)}      
                 </select>

@@ -51,7 +51,9 @@ export function getTemperaments(){
 }
 
 export function setFilters(filters){
-   console.log(filters);
     return {type:'SET_FILTERS', payload: filters};
-    
+}
+
+export function setSort(sort){
+    return {type: 'SET_SORT', payload: sort};
 }
