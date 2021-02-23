@@ -51,7 +51,7 @@ export function getTemperaments(){
 }
 
 export function setFilters(filters){
-   
+   console.log(filters);
     return {type:'SET_FILTERS', payload: filters};
     
 }

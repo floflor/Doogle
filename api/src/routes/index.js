@@ -24,14 +24,15 @@ router.get('/dogs', (req, res) => {
     if (req.query.name) {
         fetch(`https://api.thedogapi.com/v1/breeds/search?name=${req.query.name}&apikey=${key}`)
             .then(r => r.json())
-            .then(data => {
+            .then(async data => {
                 var myRes = [];
+                var dbArray = []
 
                 for (let i = 0; i < 8 && i < data.length; i++) {
                     myRes.push(data[i])
                 }
-
-                return res.send(myRes)
+                await Dog.findAll().then(tabla => tabla.forEach(c=> c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
+                return res.send(myRes.concat(dbArray))
 
             });
     }
@@ -114,10 +115,11 @@ router.get('/temperaments', (req, res) => {
 router.post('/dog', async (req, res) => {
     var temperamentoId;
     var dogId;
+    let id = 0
     const { name, weight, height, life_span, temps } = req.body;
     if (name && weight && height && life_span && temps) {
-        await Dog.create({ name, weight, height, life_span });
-
+        await Dog.create({id:id + "b" , name, weight, height, life_span });
+        id++
         await Temperamento.findOne({ where: { name: temps } })
             .then(data => { temperamentoId = data.id })
         await Dog.findOne({ where: { name: name } })

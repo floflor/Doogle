@@ -11,7 +11,7 @@ const initialState = {
     details : [],
     random : [],
     temps:[],
-    activeFilters: []
+    activeFilters: {}
     
 }
 
@@ -43,7 +43,7 @@ const reducer = function (state = initialState, action) {
             }
 
         case 'SET_FILTERS':
-          
+          console.log(action.payload);
             return{
                 ...state,
                 activeFilters: action.payload
