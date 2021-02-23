@@ -24,7 +24,7 @@ function Random({ getRandom, random }) {
 
             <div className={Styles.allTheCards}>
                 {random && random.map((r, index) =>
-                <Link className={Styles.link} to={`/detail/${r.name}`}>
+                <Link className={Styles.link} to={`/detail/${r.id}`}>
                     <div key={index} className={Styles.randomCards}>
                         <p key={r.id}>{r.name}</p>
                         {!r.image ? <img className={Styles.image} src={Error} alt="Not found" /> :

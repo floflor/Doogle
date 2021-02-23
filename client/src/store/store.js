@@ -5,11 +5,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 
+
 const initialState = {
     resultsbyName: [],
     details : [],
     random : [],
-    temps:[]
+    temps:[],
+    activeFilters: []
     
 }
 
@@ -38,6 +40,13 @@ const reducer = function (state = initialState, action) {
             return{
                ...state, 
                temps: action.payload
+            }
+
+        case 'SET_FILTERS':
+          
+            return{
+                ...state,
+                activeFilters: action.payload
             }
 
 

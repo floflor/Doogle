@@ -2,16 +2,15 @@ import React from 'react';
 import imgNotFound from '../../images/imgNotFound.png'
 import Styles from './card.module.css'
 import { Link } from 'react-router-dom';
-import Filters from '../filters/filters';
+import { connect } from 'react-redux';
 
-export default function Card({ res }) {
+
+function Card({ res, activeFilters }) {
+
 
 
     return (
         <div>
-            <div>
-                <Filters></Filters>
-            </div>
             <div className={Styles.containerCards}>
                 {res && res.map(c =>
                     <Link className={Styles.link} to={`/detail/${c.id}`}>
@@ -30,5 +29,13 @@ export default function Card({ res }) {
         </div>
     )
 }
+function mapStateToProps(state){
+    return{
+        activeFilters: state.activeFilters
+    }
+}
+function mapDispatchToProps(dispatch){
+    return {}
+}
 
-
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

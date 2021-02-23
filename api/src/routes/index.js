@@ -46,7 +46,8 @@ router.get('/dogs', (req, res) => {
                     var myObj = {
                         temperament: data[random].temperament,
                         name: data[random].name,
-                        image: data[random].image
+                        image: data[random].image,
+                        id: data[random].id
                     }
                     myRes.push(myObj);
                 }
