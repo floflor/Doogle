@@ -5,17 +5,13 @@
     justify-content: center;
 }
 
-.btn{
-    border-radius: 100%;
-    font-size: 1.2rem;
-    border: 1px solid rgb(126, 126, 126);
-    filter: drop-shadow(4px 4px 4px #222);
-}
+
 .btn{
     outline: none;
     margin:5px;
     font-family:'Roboto', sans-serif;
     font-weight: 400;
+    cursor:pointer
 }
 
 .btn:hover{

@@ -11,14 +11,15 @@ export default function Pagination({ resultsPerPage, totalResults, paginate }) {
     return (
         <nav className={Styles.divPag}>
             
-                {pageNumbers.map(number => (
-                    
-                        <button className={Styles.btn} key={number} onClick={()=> paginate(number)}>
+            <ul>
+                {pageNumbers.length>1 && pageNumbers.map(number => (
+                    <li className={Styles.btn} key={number} onClick={()=> paginate(number)}>
                             {number}
-                        </button>
+                        </li>
                    
-                ))}
+                   ))}
             
+                   </ul>
         </nav>
     )
 }

@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { getTemperaments } from '../../actions/actions';
 import { connect } from 'react-redux';
 import Styles from './create.module.css';
+import { useForm } from "react-hook-form";
 
 
-function Create({getTemperaments, temps}) {
- useEffect(()=>{
-     getTemperaments();
- },[])
+function Create({ getTemperaments, temps }) {
+    useEffect(() => {
+        getTemperaments();
+    }, []) 
+    const { reset } = useForm();
+
+    const [message, setMessage] = useState('');
 
     const [input, setInput] = useState({
         name: '',
@@ -32,22 +36,25 @@ function Create({getTemperaments, temps}) {
                 'Content-Type': 'application/json'
             }
         })
-        fetch('')
+        setMessage('Dog created!');
+        reset();
+
     }
 
-    function handleSelectChange(e){
+    function handleSelectChange(e) {
         setInput({
             ...input,
             temps: e.target.value
         })
     }
 
-    
-    
+
+
 
     return (
         <div className={Styles.createPage}>
             <h1>Create a Doggo!</h1>
+            <p>{message}</p>
 
             <form className={Styles.createContainer} onSubmit={submit}>
                 <label htmlFor="Name">Name</label>
@@ -62,10 +69,10 @@ function Create({getTemperaments, temps}) {
 
                 <label htmlFor="LifeSpan">Life Span</label>
                 <input className={Styles.input} onChange={handleInputChange} type='number' name='life_span' placeholder='Life Span' required />
-               
+
                 <select onChange={handleSelectChange} required>
                     <option>Select</option>
-                 {temps && temps.map((t, index ) => <option key={index} className={Styles.options} value={t.name}>{t.name}</option>)}      
+                    {temps && temps.map((t, index) => <option key={index} className={Styles.options} value={t.name}>{t.name}</option>)}
                 </select>
 
                 <button className={Styles.btn} onSubmit={submit}>Submit</button>
@@ -76,14 +83,14 @@ function Create({getTemperaments, temps}) {
 }
 
 const mapStateToProps = state => ({
-    temps : state.temps
-   })
-   
-   
-   function mapDispatchToProps(dispatch) {
-       return {
-        getTemperaments: () =>{ dispatch(getTemperaments())},      
-       }
-   }
-   
+    temps: state.temps
+})
+
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getTemperaments: () => { dispatch(getTemperaments()) },
+    }
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(Create);

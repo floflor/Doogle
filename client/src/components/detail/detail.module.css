@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+.containerPage{
+ display: flex;
+ height:85vh;
+ background-image: url('../../images/background.png');
+ justify-content: center;
+ 
+ 
+}
+.containerDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height:auto;
+    width:80%;
+    background-color: rgba(71, 71, 71, 0.493);
+    border-radius: 30px;
+    margin:10px;
+    
+    
+}
+
+.image{
+    width:300px;
+    height:auto;
+    align-self: center;
+    border-radius: 10px;
+    margin: 10px;
+    
+}
+.image:hover{
+    transform: scale(1.2);
+    transition: all 1s ease;
+}
+
+.textContainer{
+    font-family:'Roboto', sans-serif;
+    text-align: left;
+    align-self: center;
+    margin:  20px;
+}

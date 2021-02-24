@@ -35,13 +35,13 @@ function Sorting({ setSort }) {
             <form onSubmit={handleSubmit}>
 
                 <select onChange={handleSelectChange} name="alphabetical">
-                    <option>Alphabetical</option>
+                    <option value=''>Alphabetical</option>
                     <option value='az' name='az'>A-Z</option>
                     <option value='za' name='za'>Z-A</option>
                 </select>
 
                 <select onChange={handleSelectChange} name="weight">
-                    <option >Weight</option>
+                    <option value=''>Weight</option>
                     <option name='increasing' value='increasing'>Increasing</option>
                     <option value='descending' name='descending'>Descending</option>
                 </select>

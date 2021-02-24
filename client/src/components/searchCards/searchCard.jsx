@@ -2,10 +2,10 @@ import React from 'react';
 import imgNotFound from '../../images/imgNotFound.png'
 import Styles from './card.module.css'
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 
-function Card({ res, activeFilters }) {
+
+export default function Card({ res}) {
 
 
 
@@ -29,13 +29,3 @@ function Card({ res, activeFilters }) {
         </div>
     )
 }
-function mapStateToProps(state){
-    return{
-        activeFilters: state.activeFilters
-    }
-}
-function mapDispatchToProps(dispatch){
-    return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Card);

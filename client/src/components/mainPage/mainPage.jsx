@@ -7,7 +7,7 @@ import Filters from '../filters/filters';
 import Sorting from '../sorting/sorting';
 
 
-function MainPage({ results, activeFilters }) {
+function MainPage({ results, activeFilters, activeSort }) {
      //DEFINING PAGINATION
 
     const [currentPage, setCurrentPage] = React.useState(1);
@@ -16,8 +16,34 @@ function MainPage({ results, activeFilters }) {
     //ARRAY FOR FILTERED RESULT 
     let filtered = []
 
+    //CHECK IF SORT 
+    if (activeSort.alphabetical !== ''){
+        console.log('entro');
+        if(activeSort.alphabetical === 'az'){
+            results.sort(function(a, b) {
+                return a.name.localeCompare(b.name);
+             });
+        }
+        if(activeSort.alphabetical === 'za'){
+            results.sort(function(a, b) {
+                return b.name.localeCompare(a.name);
+             });
+        }
+    }
+   else if (activeSort.weight !== ''){
+       if(activeSort.weight === 'increasing'){
+        results.sort(function(a, b) {
+            return a.weight.imperial.localeCompare(b.weight.imperial);
+         });
+       }
+       if(activeSort.weight === 'descending'){
+        results.sort(function(a, b) {
+            return b.weight.imperial.localeCompare(a.weight.imperial);
+         });
+       }
+   }
 
-
+   
 
 
     // Change page
@@ -75,7 +101,8 @@ function MainPage({ results, activeFilters }) {
 
 const mapStateToProps = state => ({
     results: state.resultsbyName,
-    activeFilters: state.activeFilters
+    activeFilters: state.activeFilters,
+    activeSort: state.activeSort
 })
 
 

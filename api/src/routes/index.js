@@ -25,15 +25,18 @@ router.get('/dogs', (req, res) => {
         fetch(`https://api.thedogapi.com/v1/breeds/search?name=${req.query.name}&apikey=${key}`)
             .then(r => r.json())
             .then(async data => {
-                var myRes = [];
-                var dbArray = []
 
-                for (let i = 0; i < 8 && i < data.length; i++) {
-                    myRes.push(data[i])
+                if (data[0]) {
+                    var myRes = [];
+                    var dbArray = []
+
+                    for (let i = 0; i < 8 && i < data.length; i++) {
+                        myRes.push(data[i])
+                    }
+                    await Dog.findAll().then(tabla => tabla.forEach(c => c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
+                    return res.send(myRes.concat(dbArray))
                 }
-                await Dog.findAll().then(tabla => tabla.forEach(c=> c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
-                return res.send(myRes.concat(dbArray))
-
+                else{ return res.status(404).send("Dog not found")}
             });
     }
     //if just /dog
@@ -41,6 +44,7 @@ router.get('/dogs', (req, res) => {
         fetch('https://api.thedogapi.com/v1/breeds')
             .then(r => r.json())
             .then(data => {
+
                 var myRes = [];
                 for (let i = 0; i < 8; i++) {
                     var random = Math.floor(Math.random() * 100) + 1;
@@ -64,31 +68,37 @@ router.get('/dogs', (req, res) => {
 
 router.get('/dogs/:idRaza', (req, res) => {
     fetch(`https://api.thedogapi.com/v1/images/search?breed_id=${req.params.idRaza}`)
-           .then(r => r.json())
-           .then(dt =>{
-            
-                 var myArr = [];
+        .then(r => r.json())
+        .then(dt => {
 
-                    var myObj = {
-                        temperament: dt[0].breeds.temperament,
-                        name: dt[0].breeds[0].name,
-                        image: dt[0].url,
-                        weight: dt[0].breeds[0].weight.metric,
-                        height: dt[0].breeds[0].height.metric,
-                        lifeSpan: dt[0].breeds[0].life_span
-                    }
+            if (dt[0]) {
 
-                    myArr.push(myObj);
-                    return res.json(dt);
-           })
-    
-    
+                var myArr = [];
+
+                var myObj = {
+                    temperament: dt[0].breeds.temperament,
+                    name: dt[0].breeds[0].name,
+                    image: dt[0].url,
+                    weight: dt[0].breeds[0].weight.metric,
+                    height: dt[0].breeds[0].height.metric,
+                    lifeSpan: dt[0].breeds[0].life_span
+                }
+
+                myArr.push(myObj);
+                return res.json(dt);
+            }
+
+            return res.status(404).send('Dog not found')
+        })
+
+
+
 });
 
 // GET /temperaments
 
 router.get('/temperaments', (req, res) => {
-    var temps = [];    
+    var temps = [];
 
     fetch('https://api.thedogapi.com/v1/breeds')
         .then(r => r.json())
@@ -98,39 +108,42 @@ router.get('/temperaments', (req, res) => {
                 if (tabla.length === 0) {
                     data.forEach(c => temps.push(c.temperament ? c.temperament.split(',' && ', ') : 'Cutie'));
                     var array2 = Array.from(new Set(temps.flat()))
-                    for (var i in array2){
-                        await Temperamento.create({ name: array2[i] });  
-                    }   
-                    await Temperamento.findAll().then(data => result = data )
-                }           
+                    for (var i in array2) {
+                        await Temperamento.create({ name: array2[i] });
+                    }
+                    await Temperamento.findAll().then(data => result = data)
+                }
                 return res.json(result);
-            })     
-          
+            })
+
         });
 });
 
 
 // POST /dog 
 
-var idD=0;
+var idD = 0;
 router.post('/dog', async (req, res) => {
-    
+
     var temperamentoId;
     var dogId;
     idD++;
-   
+
     const { name, weight, height, life_span, temps } = req.body;
     if (name && weight && height && life_span && temps) {
-        await Dog.create({id:idD +'b', name, weight, height, life_span, cbm: 'yes', temperament:temps });
+        await Dog.create({ id: idD + 'b', name, weight, height, life_span, cbm: 'yes', temperament: temps });
         await Temperamento.findOne({ where: { name: temps } })
-        .then(data => { temperamentoId = data.id })
+            .then(data => { temperamentoId = data.id })
         await Dog.findOne({ where: { name: name } })
-        .then(dato => { dogId = dato.id })
-        
+            .then(dato => { dogId = dato.id })
+
         tablaIntermedia.create({ dogId, temperamentoId });
-        
-        
+
+
         res.send('Dog created!');
+    }
+    else{
+        return res.status(400).send("Sorry, your dog can't be created right now")
     }
 
 })

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { setFilters } from '../../actions/actions';
 import React, { useState } from 'react';
 
+
 function Filters({ setFilters }) {
 
     //DEFINING HOOKS FOR SELECT STATES
