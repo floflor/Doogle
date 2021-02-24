@@ -140,11 +140,9 @@ router.post('/dog', async (req, res) => {
         tablaIntermedia.create({ dogId, temperamentoId });
 
 
-        res.send('Dog created!');
+       return res.send('Dog created!');
     }
-    else{
-        return res.status(400).send("Sorry, your dog can't be created right now")
-    }
+   
 
 })
 

@@ -15,20 +15,22 @@ import store from './store/store';
 
 function App() {
   return (
-    
+
     <Provider store={store}>
       <Router>
         <div className="App">
-          <Route exact path='/' component={Landing} />
-          <NavBar/>
-        <Switch>
-          <Route path='/home' component={Random} />
-          <Route path='/search' component={MainPage}/>
-          <Route path='/create' component={Create}/>
-          <Route path='/about' component={About}/>  
-          <Route path='/detail/:id' component={Detail}/>
-          <Route component={Error}/>
-        </Switch>
+          <Switch>
+            <Route exact path='/' component={Landing} />
+            <>
+              <NavBar />
+              <Route path='/home' component={Random} />
+              <Route path='/search' component={MainPage} />
+              <Route path='/create' component={Create} />
+              <Route path='/about' component={About} />
+              <Route path='/detail/:id' component={Detail} />
+            </>
+            <Route component={Error} />
+          </Switch>
         </div>
       </Router>
     </Provider>

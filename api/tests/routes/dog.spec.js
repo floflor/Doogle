@@ -6,19 +6,9 @@ const { Dog, conn } = require('../../src/db.js');
 
 const agent = session(app);
 const dog = {
-  name: 'Pug',
+  name: "Lola",
+  weight: "15",
+  height: "10",
+  life_span: "20",
+  temps: "Loving"
 };
-
-describe('Videogame routes', () => {
-  before(() => conn.authenticate()
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  }));
-  beforeEach(() => Dog.sync({ force: true })
-    .then(() => Dog.create(dog)));
-  describe('GET /dogs', () => {
-    it('should get 200', () =>
-      agent.get('/dogs').expect(200)
-    );
-  });
-});

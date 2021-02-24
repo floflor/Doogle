@@ -2,6 +2,7 @@
 import { connect } from 'react-redux';
 import { setSort } from '../../actions/actions';
 import React, { useState } from 'react';
+import Styles from '../filters/filters.module.css';
 
 function Sorting({ setSort }) {
 
@@ -29,24 +30,33 @@ function Sorting({ setSort }) {
         setSort(select)
     }
 
+    //TOGGLE
+    const [isActive, setActive] = useState(false);
+
+    const toggleClass = () => {
+        setActive(!isActive);
+    };
+
+
     return (
-        <div>
+        <div className={Styles.containerFilters}>
 
-            <form onSubmit={handleSubmit}>
+            <form className={Styles.form} onSubmit={handleSubmit}>
 
-                <select onChange={handleSelectChange} name="alphabetical">
+                <select className={Styles.select} onChange={handleSelectChange} name="alphabetical">
                     <option value=''>Alphabetical</option>
                     <option value='az' name='az'>A-Z</option>
                     <option value='za' name='za'>Z-A</option>
                 </select>
 
-                <select onChange={handleSelectChange} name="weight">
+                <select className={Styles.select} onChange={handleSelectChange} name="weight">
                     <option value=''>Weight</option>
                     <option name='increasing' value='increasing'>Increasing</option>
                     <option value='descending' name='descending'>Descending</option>
                 </select>
 
-                <button type='submit'>Set Sort</button>
+                <button className={isActive ? Styles.btnActive : Styles.btnSubmit}
+                    onClick={toggleClass} type='submit'>Set Sort</button>
 
             </form>
 
@@ -56,7 +66,7 @@ function Sorting({ setSort }) {
 
 function mapStateToProps(state) {
     return {
-        
+
     }
 }
 

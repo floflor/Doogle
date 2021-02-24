@@ -36,7 +36,23 @@
     align-self: center;
     margin-left: 30px;
     filter: drop-shadow(1.5px 1.5px 1.5px #222);
+    cursor:pointer;
 }
+
+.logo:hover{
+    animation: move 0.5s infinite;
+    animation-direction: alternate;
+}
+
+@keyframes move {
+    0% {
+      transform: rotate(3deg)
+    }
+    100% {
+      transform: rotate(-3deg);
+    }
+  }
+  
 
 
 .formStyle{
@@ -102,6 +118,7 @@
 .btn{
     border:none;
     background-color: transparent;
+    cursor:pointer;
 }
 
 .btn:focus{
