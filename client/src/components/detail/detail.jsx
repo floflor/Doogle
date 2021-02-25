@@ -14,8 +14,11 @@ function Detail({ getDetail, match, details }) {
         getDetail(id)
     }, []);
 
+    if(details.error){
+        return <Error></Error>
+    }
 
-    if (details && details[0]) {
+    else if (details && details[0]) {
         return (
 
             <div className={Styles.containerPage}>
@@ -31,7 +34,9 @@ function Detail({ getDetail, match, details }) {
                 </div>
             </div>
         )
-    } else { return <Error></Error> }
+        
+    }
+    return <div>Loading...</div>
 }
 
 function mapStateToProps(state) {

@@ -24,6 +24,7 @@
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.1",
     "pg": "^8.5.1",
+    "run-middleware": "^0.9.10",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {

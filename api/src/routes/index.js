@@ -25,18 +25,19 @@ router.get('/dogs', (req, res) => {
         fetch(`https://api.thedogapi.com/v1/breeds/search?name=${req.query.name}&apikey=${key}`)
             .then(r => r.json())
             .then(async data => {
+                var myRes = [];
+                var dbArray = []
 
                 if (data[0]) {
-                    var myRes = [];
-                    var dbArray = []
 
                     for (let i = 0; i < 8 && i < data.length; i++) {
                         myRes.push(data[i])
                     }
                     await Dog.findAll().then(tabla => tabla.forEach(c => c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
-                    return res.send(myRes.concat(dbArray))
+                    return res.status(200).send(myRes.concat(dbArray))
                 }
-                else{ return res.status(404).send("Dog not found")}
+                else{ await Dog.findAll().then(tabla => tabla.forEach(c => c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
+                return res.status(200).send(myRes.concat(dbArray))}
             });
     }
     //if just /dog
@@ -88,7 +89,9 @@ router.get('/dogs/:idRaza', (req, res) => {
                 return res.json(dt);
             }
 
-            return res.status(404).send('Dog not found')
+           else{
+               return res.json({error: 'error'});
+           }
         })
 
 

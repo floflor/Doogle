@@ -14,7 +14,7 @@ export default function NavBar() {
             </div>
             <div className={Styles.divLinks}>
                 <NavLink className={Styles.Links} to='/create'>Create your own</NavLink>
-                <NavLink className={Styles.Links} to='/about'>About</NavLink>
+                
             </div>
         </nav>
     )

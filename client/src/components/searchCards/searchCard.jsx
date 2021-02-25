@@ -9,6 +9,7 @@ export default function Card({ res}) {
 
 
 
+    console.log(res)
     return (
         <div>
             <div className={Styles.containerCards}>

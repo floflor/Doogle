@@ -3,17 +3,30 @@
     display:flex;
     width: 100vw;
     justify-content: center;
+    flex-direction: row;
+}
+.ul{
+    list-style-type:none;
+    width:40%;
+    display:flex;
+    justify-content: center;
+    background-color:rgb(212, 212, 212) ;
+    border-radius: 20px;
+    text-align: center;
+    
+}
+.li{
+    align-self: center;
+    margin: 10px;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    
+    
 }
 
-
-.btn{
-    outline: none;
-    margin:5px;
-    font-family:'Roboto', sans-serif;
-    font-weight: 400;
-    cursor:pointer
-}
-
-.btn:hover{
-    background-color: rgb(212, 212, 212);
+.li:hover{
+   filter: drop-shadow(1px 1px 1px rgb(77, 77, 77));
+   
 }
