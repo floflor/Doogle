@@ -2,12 +2,16 @@ import React from 'react';
 import imgNotFound from '../../images/imgNotFound.png'
 import Styles from './card.module.css'
 import { Link } from 'react-router-dom';
+import Error from '../notfound/notfound'
 
 
 
 export default function Card({ res}) {
-
-
+ 
+    if (res.error){
+     <Error></Error>
+    }
+    console.log(res);
 
     console.log(res)
     return (
@@ -17,8 +21,8 @@ export default function Card({ res}) {
                     <Link className={Styles.link} to={`/detail/${c.id}`}>
                         <div className={Styles.divCard}>
                             <div className={Styles.separate}>
-                                <p className={Styles.title} key={c.id}>Breed: {c.name}</p>
-                                <p className={Styles.temp} key={c.name}>Temperament: {c.temperament}.</p>
+                                <p className={Styles.title} >Breed: {c.name}</p>
+                                <p className={Styles.temp} key={c.name}>Temperament: {c.temperaments}.</p>
                             </div>
                             {c.img === 'error' ? <img className={Styles.image} src={imgNotFound} alt="Not found" /> :
                                 <img className={Styles.image} key={c.reference_image_id} src={c.img} alt={c.name} />}

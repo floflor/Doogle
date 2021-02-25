@@ -6,7 +6,11 @@ const { Dog, conn } = require('../../src/db.js');
 
 const agent = session(app);
 const dog = {
-  name: 'Pug',
+  name: "Lola",
+  weight: "15",
+  height: "10",
+  life_span: "20",
+  temps: "Loving"
 };
 
 describe('/POST /dog', () => {

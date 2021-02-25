@@ -31,8 +31,18 @@ function Filters({ setFilters }) {
         setFilters(select)
     }
 
+<<<<<<< HEAD
     
  
+=======
+    //TOGGLE
+    const [isActive, setActive] = useState(false);
+
+    const toggleClass = (e) => {
+       
+        setActive(!isActive);
+    };
+>>>>>>> 4534a1c9fd42f80fcf2d831b72c74f7859e79ea5
 
 
     return (
@@ -59,7 +69,12 @@ function Filters({ setFilters }) {
 
 
 
+<<<<<<< HEAD
                 <button className={Styles.btnSubmit} type='submit'>Set Filters</button>
+=======
+                <button className={isActive ? Styles.btnActive : Styles.btnSubmit}
+                    onClick={toggleClass} type='submit'>Set Filters</button>
+>>>>>>> 4534a1c9fd42f80fcf2d831b72c74f7859e79ea5
 
             </form>
 

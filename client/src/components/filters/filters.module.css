@@ -41,8 +41,29 @@
  }
 .btnSubmit:focus{
     outline: none;
+<<<<<<< HEAD
     filter:none;
    
 }
 
+=======
+   
+}
+
+.btnActive{
+    width:15%;
+   padding: 0;
+   height: 30px;
+   align-self: center;
+   font-family:'Roboto', sans-serif;
+   border-radius: 10px;
+   border:none;
+   background-color:rgb(212, 212, 212);
+   cursor: pointer;
+   box-shadow: inset 7px 7px 8px -7px rgba(34,34,34,0.66);}
+
+.btnActive:focus{
+    outline: none;
+}
+>>>>>>> 4534a1c9fd42f80fcf2d831b72c74f7859e79ea5
 
