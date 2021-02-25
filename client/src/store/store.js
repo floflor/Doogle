@@ -26,6 +26,7 @@ const reducer = function (state = initialState, action) {
             }
 
         case 'GET_DETAIL':
+
             return{
                 ...state,
                 details : action.payload

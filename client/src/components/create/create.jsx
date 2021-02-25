@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 function Create({ getTemperaments, temps }) {
     useEffect(() => {
         getTemperaments();
-    }, []) 
+    }, [])
     const { reset } = useForm();
 
     const [message, setMessage] = useState('');
@@ -54,7 +54,9 @@ function Create({ getTemperaments, temps }) {
     return (
         <div className={Styles.createPage}>
             <h1>Create a Doggo!</h1>
-            <p>{message}</p>
+            <div className={Styles.alertCreated}>
+                <p className={Styles.txt}>{message}</p>
+            </div>
 
             <form className={Styles.createContainer} onSubmit={submit}>
                 <label htmlFor="Name">Name</label>

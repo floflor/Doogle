@@ -40,7 +40,7 @@
     border-radius: 15px;
     border:none;
     filter: drop-shadow(5px 5px 5px #222);
-
+    cursor: pointer;
 
 }
 

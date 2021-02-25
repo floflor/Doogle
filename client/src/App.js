@@ -5,7 +5,6 @@ import { Switch } from 'react-router-dom';
 import Landing from './components/landing/landing';
 import MainPage from './components/mainPage/mainPage';
 import Create from './components/create/create';
-import About from './components/about/about';
 import NavBar from './components/navBar/navBar';
 import Detail from './components/detail/detail';
 import Random from './components/random/random';
@@ -26,7 +25,6 @@ function App() {
               <Route path='/home' component={Random} />
               <Route path='/search' component={MainPage} />
               <Route path='/create' component={Create} />
-              <Route path='/about' component={About} />
               <Route path='/detail/:id' component={Detail} />
             </>
             <Route component={Error} />

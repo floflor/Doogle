@@ -31,12 +31,13 @@ function Filters({ setFilters }) {
         setFilters(select)
     }
 
- //TOGGLE
- const [isActive, setActive] = useState(false);
+    //TOGGLE
+    const [isActive, setActive] = useState(false);
 
- const toggleClass = () => {
-   setActive(!isActive);
- };
+    const toggleClass = (e) => {
+       
+        setActive(!isActive);
+    };
 
 
     return (
@@ -62,10 +63,10 @@ function Filters({ setFilters }) {
                 </select>
 
 
-                
-                <button className={isActive ? Styles.btnActive : Styles.btnSubmit} 
-      onClick={toggleClass}  type='submit'>Set Filters</button>
-               
+
+                <button className={isActive ? Styles.btnActive : Styles.btnSubmit}
+                    onClick={toggleClass} type='submit'>Set Filters</button>
+
             </form>
 
 

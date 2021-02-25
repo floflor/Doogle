@@ -26,17 +26,45 @@ router.get('/dogs', (req, res) => {
             .then(r => r.json())
             .then(async data => {
 
-                if (data[0]) {
-                    var myRes = [];
-                    var dbArray = []
+                var myRes = [];
 
-                    for (let i = 0; i < 8 && i < data.length; i++) {
-                        myRes.push(data[i])
-                    }
-                    await Dog.findAll().then(tabla => tabla.forEach(c => c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
-                    return res.send(myRes.concat(dbArray))
+                for (let i = 0; i < data.length; i++) {
+                    myRes.push({
+                        name: data[i].name,
+                        temperaments: data[i].temperament,
+                        reference_image_id: data[i].reference_image_id
+                    })
                 }
-                else{ return res.status(404).send("Dog not found")}
+                await Dog.findAll({ where: { name: req.query.name } })
+                    .then(db => {myRes = [...myRes, ...db]});
+
+                if (!myRes[0]){
+                    return res.json({error: 'error'})
+                }
+                res.json(myRes);
+                /*   var myRes = [];
+                  var dbArray = []
+              if (data[0]) {
+                  console.log('primero')
+                  for (let i = 0; i < 8 && i < data.length; i++) {
+                      myRes.push(data[i])
+                  }
+                  await Dog.findAll().then(tabla => tabla.forEach(c => c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
+                  return res.status(200).send(myRes.concat(dbArray))
+              }
+              else{
+                  console.log('segundo')
+                  await Dog.findAll({where: {name: req.query.name}})
+                  .then(response => {
+                      if (!response[0]){
+                         return res.json({error:'error'});
+                      }
+                      dbArray.push(response);
+                      
+                  })
+                  return res.status(200).send(myRes.concat(dbArray))
+              }
+               */
             });
     }
     //if just /dog
@@ -88,7 +116,7 @@ router.get('/dogs/:idRaza', (req, res) => {
                 return res.json(dt);
             }
 
-            return res.status(404).send('Dog not found')
+            return res.json({ error: 'error' })
         })
 
 
@@ -140,9 +168,9 @@ router.post('/dog', async (req, res) => {
         tablaIntermedia.create({ dogId, temperamentoId });
 
 
-       return res.send('Dog created!');
+        return res.send('Dog created!');
     }
-   
+
 
 })
 
