@@ -51,6 +51,7 @@ function MainPage({ results, activeFilters, activeSort }) {
 
     //FILTERS SET UP 
     for (let i = 0; i < results.length; i++) {
+        
 
         if (activeFilters.temperament && activeFilters.breed) {
             if (activeFilters.breed === 'Created by me' && results[i].temperament.includes(activeFilters.temperament) && results[i].hasOwnProperty('cbm')) {
@@ -83,8 +84,8 @@ function MainPage({ results, activeFilters, activeSort }) {
     // Get current result or filtered result 
     const indexOfLastResult = currentPage * resultsPerPage;
     const indexOfFirstResult = indexOfLastResult - resultsPerPage;
-    const currentResult = filtered[0] ? filtered.slice(indexOfFirstResult, indexOfLastResult) : results.slice(indexOfFirstResult, indexOfLastResult);
-
+    const currentResult = filtered.length>0 ? filtered.slice(indexOfFirstResult, indexOfLastResult) : results.slice(indexOfFirstResult, indexOfLastResult);
+   
     return (
         <div className={Styles.mainDiv}>
             <div>

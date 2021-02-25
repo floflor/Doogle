@@ -2,6 +2,7 @@
 import { connect } from 'react-redux';
 import { setFilters } from '../../actions/actions';
 import React, { useState } from 'react';
+import Styles from './filters.module.css';
 
 
 function Filters({ setFilters }) {
@@ -30,15 +31,16 @@ function Filters({ setFilters }) {
         setFilters(select)
     }
 
-
+    
+ 
 
 
     return (
-        <div>
+        <div className={Styles.containerFilters}>
 
-            <form onSubmit={handleSubmit}>
+            <form className={Styles.form} onSubmit={handleSubmit}>
 
-                <select onChange={handleSelectChange} name="temperament">
+                <select className={Styles.select} onChange={handleSelectChange} name="temperament">
                     <option>Temperament</option>
                     <option value='Gentle' name='Gentle'>Gentle</option>
                     <option value='Active' name='Active'>Active</option>
@@ -49,7 +51,7 @@ function Filters({ setFilters }) {
 
                 </select>
 
-                <select onChange={handleSelectChange} name="breed">
+                <select className={Styles.select} onChange={handleSelectChange} name="breed">
                     <option >Breed</option>
                     <option name='Existent' value='Existent'>Existent</option>
                     <option value='Created by me' name='Created by me'>Created by me</option>
@@ -57,7 +59,7 @@ function Filters({ setFilters }) {
 
 
 
-                <button type='submit'>Set Filters</button>
+                <button className={Styles.btnSubmit} type='submit'>Set Filters</button>
 
             </form>
 
@@ -68,7 +70,7 @@ function Filters({ setFilters }) {
 
 function mapStateToProps(state) {
     return {
-        
+
     }
 }
 
