@@ -18,7 +18,7 @@ function Create({ getTemperaments, temps }) {
         weight: '',
         height: '',
         life_span: '',
-        temps: ''
+        temps:[]
     });
 
     function handleInputChange(e) {
@@ -47,7 +47,17 @@ function Create({ getTemperaments, temps }) {
             temps: e.target.value
         })
     }
+    const select = document.getElementById('select')
 
+        let array = []
+    function selected(){
+        if (!array.includes(select.value)){        
+            array.push(select.value)
+        }else array = array.filter(a => a !== select.value)
+           
+        return setInput({...input, temps: [...input.temps, ...array]})
+    }
+    
 
 
 
@@ -72,7 +82,7 @@ function Create({ getTemperaments, temps }) {
                 <label htmlFor="LifeSpan">Life Span</label>
                 <input className={Styles.input} onChange={handleInputChange} type='number' name='life_span' placeholder='Life Span' required />
 
-                <select onChange={handleSelectChange} required>
+                <select id='select' onChange={selected} required>
                     <option>Select</option>
                     {temps && temps.map((t, index) => <option key={index} className={Styles.options} value={t.name}>{t.name}</option>)}
                 </select>

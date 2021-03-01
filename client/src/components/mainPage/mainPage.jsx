@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Card from '../searchCards/searchCard';
 import Pagination from '../pagination/pagination';
@@ -78,14 +78,15 @@ function MainPage({ results, activeFilters, activeSort }) {
 
     }
 
-
+    
 
 
     // Get current result or filtered result 
     const indexOfLastResult = currentPage * resultsPerPage;
     const indexOfFirstResult = indexOfLastResult - resultsPerPage;
     const currentResult = filtered.length>0 ? filtered.slice(indexOfFirstResult, indexOfLastResult) : results.slice(indexOfFirstResult, indexOfLastResult);
-   
+    console.log(indexOfFirstResult)
+    console.log (indexOfLastResult)
     return (
         <div className={Styles.mainDiv}>
             <div>

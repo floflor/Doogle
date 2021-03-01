@@ -36,8 +36,10 @@ router.get('/dogs', (req, res) => {
                     await Dog.findAll().then(tabla => tabla.forEach(c => c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
                     return res.status(200).send(myRes.concat(dbArray))
                 }
-                else{ await Dog.findAll().then(tabla => tabla.forEach(c => c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
-                return res.status(200).send(myRes.concat(dbArray))}
+                else {
+                    await Dog.findAll().then(tabla => tabla.forEach(c => c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
+                    return res.status(200).send(myRes.concat(dbArray))
+                }
             });
     }
     //if just /dog
@@ -89,9 +91,9 @@ router.get('/dogs/:idRaza', (req, res) => {
                 return res.json(dt);
             }
 
-           else{
-               return res.json({error: 'error'});
-           }
+            else {
+                return res.json({ error: 'error' });
+            }
         })
 
 
@@ -135,17 +137,24 @@ router.post('/dog', async (req, res) => {
     const { name, weight, height, life_span, temps } = req.body;
     if (name && weight && height && life_span && temps) {
         await Dog.create({ id: idD + 'b', name, weight, height, life_span, cbm: 'yes', temperament: temps });
-        await Temperamento.findOne({ where: { name: temps } })
-            .then(data => { temperamentoId = data.id })
+    
         await Dog.findOne({ where: { name: name } })
             .then(dato => { dogId = dato.id })
 
-        tablaIntermedia.create({ dogId, temperamentoId });
+        for (let i in temps) {
+        
+            await Temperamento.findOne({ where: { name: temps[i] } })
+                .then(async vartemp => {
+                    await tablaIntermedia.create({ dogId, temperamentoId: vartemp.id })
+                })
+               
+        }
+
 
 
         res.send('Dog created!');
     }
-    else{
+    else {
         return res.status(400).send("Sorry, your dog can't be created right now")
     }
 

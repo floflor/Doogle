@@ -27,7 +27,7 @@ import { useHistory } from 'react-router';
         <form onSubmit={handleSubmit} className={Styles.formStyle}>
             <input placeholder='Search your favorite doggos...' className={Styles.inpt} onChange={handleInputChange} type="text"/>
             <button onClick={handleSubmit} className={Styles.btn}>
-            <img className={Styles.icon} src={SearchIcon}></img>
+            <img className={Styles.icon} src={SearchIcon} alt='icon'></img>
             </button>
         </form>
         </div>
