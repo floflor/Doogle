@@ -13,11 +13,7 @@ export default function Pagination({ resultsPerPage, totalResults, paginate }) {
         <nav className={Styles.divPag}>
             
             <ul className={Styles.ul}>
-<<<<<<< HEAD
                 {  pageNumbers.map(number => (
-=======
-                {pageNumbers.length>1 && pageNumbers.map(number => (
->>>>>>> 2c69234076faf681c9731bbeb8be2a7814842ee5
                     <li className={Styles.li} key={number} onClick={()=> paginate(number)}>
                             {number}
                         </li>

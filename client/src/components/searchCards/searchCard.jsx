@@ -13,11 +13,8 @@ export default function Card({ res}) {
     }
     console.log(res);
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 2c69234076faf681c9731bbeb8be2a7814842ee5
     console.log(res)
     return (
         <div>
