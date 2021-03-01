@@ -35,11 +35,17 @@ router.get('/dogs', (req, res) => {
                     }
                     await Dog.findAll().then(tabla => tabla.forEach(c => c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
                     return res.status(200).send(myRes.concat(dbArray))
+<<<<<<< HEAD
                 }
                 else {
                     await Dog.findAll().then(tabla => tabla.forEach(c => c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
                     return res.status(200).send(myRes.concat(dbArray))
                 }
+=======
+                }
+                else{ await Dog.findAll().then(tabla => tabla.forEach(c => c.dataValues.name.includes(req.query.name) ? dbArray.push(c.dataValues) : console.log('no hay db para esa busqueda')))
+                return res.status(200).send(myRes.concat(dbArray))}
+>>>>>>> 2c69234076faf681c9731bbeb8be2a7814842ee5
             });
     }
     //if just /dog
@@ -91,9 +97,15 @@ router.get('/dogs/:idRaza', (req, res) => {
                 return res.json(dt);
             }
 
+<<<<<<< HEAD
             else {
                 return res.json({ error: 'error' });
             }
+=======
+           else{
+               return res.json({error: 'error'});
+           }
+>>>>>>> 2c69234076faf681c9731bbeb8be2a7814842ee5
         })
 
 
@@ -152,11 +164,16 @@ router.post('/dog', async (req, res) => {
 
 
 
+<<<<<<< HEAD
         res.send('Dog created!');
     }
     else {
         return res.status(400).send("Sorry, your dog can't be created right now")
+=======
+        return res.send('Dog created!');
+>>>>>>> 2c69234076faf681c9731bbeb8be2a7814842ee5
     }
+
 
 })
 

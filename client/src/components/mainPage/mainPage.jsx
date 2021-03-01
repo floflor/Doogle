@@ -85,8 +85,12 @@ function MainPage({ results, activeFilters, activeSort }) {
     const indexOfLastResult = currentPage * resultsPerPage;
     const indexOfFirstResult = indexOfLastResult - resultsPerPage;
     const currentResult = filtered.length>0 ? filtered.slice(indexOfFirstResult, indexOfLastResult) : results.slice(indexOfFirstResult, indexOfLastResult);
+<<<<<<< HEAD
     console.log(indexOfFirstResult)
     console.log (indexOfLastResult)
+=======
+   
+>>>>>>> 2c69234076faf681c9731bbeb8be2a7814842ee5
     return (
         <div className={Styles.mainDiv}>
             <div>

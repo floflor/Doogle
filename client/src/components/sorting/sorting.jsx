@@ -30,7 +30,20 @@ function Sorting({ setSort }) {
         setSort(select)
     }
 
+<<<<<<< HEAD
     
+=======
+<<<<<<< HEAD
+    
+=======
+    //TOGGLE
+    const [isActive, setActive] = useState(false);
+
+    const toggleClass = () => {
+        setActive(!isActive);
+    };
+>>>>>>> 4534a1c9fd42f80fcf2d831b72c74f7859e79ea5
+>>>>>>> 2c69234076faf681c9731bbeb8be2a7814842ee5
 
 
     return (
@@ -50,7 +63,16 @@ function Sorting({ setSort }) {
                     <option value='descending' name='descending'>Descending</option>
                 </select>
 
+<<<<<<< HEAD
                 <button className={Styles.btnSubmit} type='submit'>Set Sort</button>
+=======
+<<<<<<< HEAD
+                <button className={Styles.btnSubmit} type='submit'>Set Sort</button>
+=======
+                <button className={isActive ? Styles.btnActive : Styles.btnSubmit}
+                    onClick={toggleClass} type='submit'>Set Sort</button>
+>>>>>>> 4534a1c9fd42f80fcf2d831b72c74f7859e79ea5
+>>>>>>> 2c69234076faf681c9731bbeb8be2a7814842ee5
 
             </form>
 

@@ -35,8 +35,21 @@ function Detail({ getDetail, match, details }) {
             </div>
         )
         
+<<<<<<< HEAD
     }
     return <div>Loading...</div>
+=======
+<<<<<<< HEAD
+    }
+    return <div>Loading...</div>
+=======
+    } else { 
+        return(
+            
+             <div>Loading...</div>) 
+    }
+>>>>>>> 4534a1c9fd42f80fcf2d831b72c74f7859e79ea5
+>>>>>>> 2c69234076faf681c9731bbeb8be2a7814842ee5
 }
 
 function mapStateToProps(state) {
