@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { getTemperaments } from '../../actions/actions';
 import { connect } from 'react-redux';
 import Styles from './create.module.css';
-import { useForm } from "react-hook-form";
+import { Link } from 'react-router-dom';
 
 
 function Create({ getTemperaments, temps }) {
     useEffect(() => {
         getTemperaments();
     }, [])
-    const { reset } = useForm();
 
     const [message, setMessage] = useState('');
 
@@ -18,7 +17,7 @@ function Create({ getTemperaments, temps }) {
         weight: '',
         height: '',
         life_span: '',
-        temps:[]
+        temps: []
     });
 
     function handleInputChange(e) {
@@ -28,7 +27,9 @@ function Create({ getTemperaments, temps }) {
         });
     }
 
-    function submit() {
+    function submit(e) {
+        
+        e.preventDefault();
         fetch('http://localhost:3001/dog', {
             method: 'POST',
             body: JSON.stringify(input),
@@ -37,41 +38,33 @@ function Create({ getTemperaments, temps }) {
             }
         })
         setMessage('Dog created!');
-        reset();
+
 
     }
 
-    function handleSelectChange(e) {
-        setInput({
-            ...input,
-            temps: e.target.value
-        })
-    }
     const select = document.getElementById('select')
 
-        let array = []
-    function selected(){
-        if (!array.includes(select.value)){        
+    let array = []
+    function selected() {
+        if (!array.includes(select.value)) {
             array.push(select.value)
-        }else array = array.filter(a => a !== select.value)
-           
-        return setInput({...input, temps: [...input.temps, ...array]})
+        } else array = array.filter(a => a !== select.value)
+
+        return setInput({ ...input, temps: [...input.temps, ...array] })
     }
-    
+
 
 
 
     return (
         <div className={Styles.createPage}>
             <h1>Create a Doggo!</h1>
-            <div className={Styles.alertCreated}>
-                <p className={Styles.txt}>{message}</p>
-            </div>
 
-            <form className={Styles.createContainer} onSubmit={submit}>
+            <form className={Styles.createContainer} onSubmit={(e) => submit(e)}>
+
                 <label htmlFor="Name">Name</label>
                 <input className={Styles.input} onChange={handleInputChange} type='text' name='name' placeholder='Put a name...' required />
-
+                
 
                 <label htmlFor="Weight">Weight</label>
                 <input className={Styles.input} onChange={handleInputChange} name='weight' placeholder='weight' type='number' required />
@@ -87,8 +80,15 @@ function Create({ getTemperaments, temps }) {
                     {temps && temps.map((t, index) => <option key={index} className={Styles.options} value={t.name}>{t.name}</option>)}
                 </select>
 
-                <button className={Styles.btn} onSubmit={submit}>Submit</button>
+                <button className={Styles.btn} onSubmit={(e) => submit(e)}>Submit</button>
             </form>
+
+            {message === 'Dog created!' ?
+                <div className={Styles.popUp}>
+                    <h2>Dog created successfully!</h2>
+                    <p><Link to='/home'>Home</Link></p>
+                </div> :
+                <></>}
 
         </div>
     )
