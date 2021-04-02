@@ -24,7 +24,7 @@ export default function Card({ res}) {
                         <div className={Styles.divCard}>
                             <div className={Styles.separate}>
                                 <p className={Styles.title} >Breed: {c.name}</p>
-                                <p className={Styles.temp} key={c.name}>Temperament: {c.temperaments}.</p>
+                                <p className={Styles.temp} key={c.name}>Temperament: {c.temperament}.</p>
                             </div>
                             {c.img === 'error' ? <img className={Styles.image} src={imgNotFound} alt="Not found" /> :
                                 <img className={Styles.image} key={c.reference_image_id} src={c.img} alt={c.name} />}

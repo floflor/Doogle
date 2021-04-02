@@ -8,11 +8,7 @@ import Styles from './filters.module.css';
 function Filters({ setFilters }) {
 
     //DEFINING HOOKS FOR SELECT STATES
-    const [select, setSelect] = useState({
-        temperament: '',
-        breed: ''
-
-    })
+    const [select, setSelect] = useState('')
 
 
     //HANDLING CHANGE 
@@ -51,15 +47,10 @@ function Filters({ setFilters }) {
 
                 </select>
 
-                <select className={Styles.select} onChange={handleSelectChange} name="breed">
-                    <option >Breed</option>
-                    <option name='Existent' value='Existent'>Existent</option>
-                    <option value='Created by me' name='Created by me'>Created by me</option>
-                </select>
+                
 
 
-
-                <button className={Styles.btnSubmit} type='submit'>Set Filters</button>
+                <button className={Styles.btnSubmit} type='submit'>Set Filter</button>
 
             </form>
 

@@ -30,18 +30,7 @@ function MainPage({ results, activeFilters, activeSort }) {
              });
         }
     }
-   else if (activeSort.weight !== ''){
-       if(activeSort.weight === 'increasing'){
-        results.sort(function(a, b) {
-            return a.weight.imperial.localeCompare(b.weight.imperial);
-         });
-       }
-       if(activeSort.weight === 'descending'){
-        results.sort(function(a, b) {
-            return b.weight.imperial.localeCompare(a.weight.imperial);
-         });
-       }
-   }
+ 
 
    
 
@@ -52,29 +41,12 @@ function MainPage({ results, activeFilters, activeSort }) {
     //FILTERS SET UP 
     for (let i = 0; i < results.length; i++) {
         
-
-        if (activeFilters.temperament && activeFilters.breed) {
-            if (activeFilters.breed === 'Created by me' && results[i].temperament.includes(activeFilters.temperament) && results[i].hasOwnProperty('cbm')) {
-                filtered.push(results[i])
-            }
-            if (activeFilters.breed === 'Existent' && results[i].temperament.includes(activeFilters.temperament) && !results[i].hasOwnProperty('cbm')) {
-                filtered.push(results[i])
-            }
-            
-        }
-        else if (activeFilters.temperament) {
+        if (activeFilters.temperament) {
 
             if (results[i].temperament.includes(activeFilters.temperament)) {
                 filtered.push(results[i])
             }
         }
-        else if (activeFilters.breed === 'Created by me' && results[i].hasOwnProperty('cbm') && !filtered.includes(results[i])) {
-            filtered.push(results[i]);
-        }
-        else if (activeFilters.breed === 'Existent' && !results[i].hasOwnProperty('cbm') && !filtered.includes(results[i])) {
-            filtered.push(results[i]);
-        }
-
 
     }
 
@@ -89,9 +61,11 @@ function MainPage({ results, activeFilters, activeSort }) {
     console.log (indexOfLastResult)
     return (
         <div className={Styles.mainDiv}>
-            <div>
+            <div className={Styles.align}>
+                <div className={Styles.filterSort}>
                 <Sorting></Sorting>
                 <Filters></Filters>
+                </div>
                 <Card res={currentResult}></Card>
                 <Pagination resultsPerPage={resultsPerPage} totalResults={filtered.length || results.length} paginate={paginate}></Pagination>
             </div>

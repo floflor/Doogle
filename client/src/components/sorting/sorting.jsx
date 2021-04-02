@@ -7,11 +7,7 @@ import Styles from '../filters/filters.module.css';
 function Sorting({ setSort }) {
 
     //DEFINING HOOKS FOR SELECT STATES
-    const [select, setSelect] = useState({
-        alphabetical: '',
-        weight: ''
-
-    })
+    const [select, setSelect] = useState('')
 
 
     //HANDLING CHANGE 
@@ -43,11 +39,7 @@ function Sorting({ setSort }) {
                     <option value='za' name='za'>Z-A</option>
                 </select>
 
-                <select className={Styles.select} onChange={handleSelectChange} name="weight">
-                    <option value=''>Weight</option>
-                    <option name='increasing' value='increasing'>Increasing</option>
-                    <option value='descending' name='descending'>Descending</option>
-                </select>
+               
 
                 <button className={Styles.btnSubmit} type='submit'>Set Sort</button>
 
