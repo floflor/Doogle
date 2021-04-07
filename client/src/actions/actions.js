@@ -3,7 +3,7 @@ export function searchDogByName(name){
     
     return  function(dispatch){
        
-        return fetch(`http://localhost:3001/dogs?name=${name}`)
+        return fetch(`https://doogle-by-flo.herokuapp.com/dogs?name=${name}`)
         .then(r => r.json())
         .then(async data => {
       
@@ -27,7 +27,7 @@ export function searchDogByName(name){
 export function getDetail(id){
     
     return function(dispatch){
-        return fetch(`http://localhost:3001/dogs/${id}`)
+        return fetch(`https://doogle-by-flo.herokuapp.com/dogs/${id}`)
         .then(r=>r.json())
         .then(data => dispatch({type:'GET_DETAIL', payload: data}))
     }
@@ -35,7 +35,7 @@ export function getDetail(id){
 
 export function getRandom(){
     return function(dispatch){
-        return fetch('http://localhost:3001/dogs')
+        return fetch('https://doogle-by-flo.herokuapp.com/dogs')
         .then(r=>r.json())
         .then(data => dispatch({type:'GET_RANDOM', payload: data}))
     }
@@ -43,7 +43,7 @@ export function getRandom(){
 
 export function getTemperaments(){
     return function (dispatch){
-        fetch('http://localhost:3001/temperaments')
+        fetch('https://doogle-by-flo.herokuapp.com/temperaments')
         .then(r => r.json())
         .then( data => dispatch({type:'GET_TEMPS', payload: data}))
       

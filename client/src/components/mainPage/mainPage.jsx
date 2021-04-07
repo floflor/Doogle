@@ -57,8 +57,7 @@ function MainPage({ results, activeFilters, activeSort }) {
     const indexOfLastResult = currentPage * resultsPerPage;
     const indexOfFirstResult = indexOfLastResult - resultsPerPage;
     const currentResult = filtered.length>0 ? filtered.slice(indexOfFirstResult, indexOfLastResult) : results.slice(indexOfFirstResult, indexOfLastResult);
-    console.log(indexOfFirstResult)
-    console.log (indexOfLastResult)
+
     return (
         <div className={Styles.mainDiv}>
             <div className={Styles.align}>
