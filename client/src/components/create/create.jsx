@@ -30,7 +30,7 @@ function Create({ getTemperaments, temps }) {
     function submit(e) {
         
         e.preventDefault();
-        fetch('http://localhost:3001/dog', {
+        fetch('https://doogle-by-flo.herokuapp.com/dog', {
             method: 'POST',
             body: JSON.stringify(input),
             headers: {
